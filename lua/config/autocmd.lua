@@ -1,6 +1,7 @@
 -- autocmd
 
 local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 autocmd("TextYankPost", {
   group = general,
@@ -30,4 +31,22 @@ autocmd("BufReadPost", {
     end
   end,
   desc = "Ir a última posición del cursor"
+})
+
+local general = augroup("General", { clear = true })
+
+autocmd("VimEnter", {
+    group = general,
+    callback = function()
+        if vim.fn.argc() == 0 then
+            vim.cmd("Lexplore")
+            vim.cmd("wincmd p")
+        end
+    end,
+})
+autocmd("FileType", {
+    pattern = "netrw",
+    callback = function()
+        vim.keymap.set("n", "q", ":close<CR>", { buffer = true })
+    end,
 })
