@@ -487,7 +487,7 @@ gwip                Formatear párrafo y mantener posición del cursor
 ```
 v                   Visual Mode por carácter
 V                   Visual Line Mode (líneas completas)
-Ctrl-v              Visual Block Mode (bloque rectangular)
+Ctrl-q              Visual Block Mode (bloque rectangular)
 gv                  Re-seleccionar la última selección visual
 ```
 
