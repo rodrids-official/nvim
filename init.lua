@@ -2,7 +2,7 @@
 
 vim.g.mapleader = ' '
 
-vim.cmd('packadd! nohlsearch')
+-- vim.cmd('packadd! nohlsearch')
 
 require("config.options")
 require("config.keymaps")
