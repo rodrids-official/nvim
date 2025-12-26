@@ -29,10 +29,3 @@ opt.shellxquote = ""
 
 -- Autorecarga de archivos
 opt.autoread = true
-
--- Explorador de archivos lateral
-vim.g.netrw_liststyle = 3        -- Vista árbol
-vim.g.netrw_banner = 0           -- Sin banner
-vim.g.netrw_winsize = 15         -- Ancho 25%
-vim.g.netrw_browse_split = 4     -- Abrir en ventana anterior
-vim.g.netrw_keepdir = 0          -- Sincronizar pwd
