@@ -21,3 +21,5 @@ map("n", "<leader>fF", "<cmd>Telescope find_files cwd=~<cr>", opts)
 map("n", "<leader>f/", "<cmd>Telescope find_files cwd=C:\"<cr>", opts)
 map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+
+map("n", "<C-s>", ":w<CR>", { desc = "Guardar archivo"})
