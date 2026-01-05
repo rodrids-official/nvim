@@ -1,4 +1,4 @@
--- keymap
+-- keymaps
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -28,3 +28,26 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
 map("n", "<C-s>", ":w<CR>", opts)
 map("i", "<C-s>", "<Esc>:w<CR>", opts)
 map("v", "<C-s>", "<Esc>:w<CR>", opts)
+
+-- LSP maps (añadir después de tener LSP activo)
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    local opts_lsp = { buffer = ev.buf, noremap = true, silent = true }
+
+    -- Navegación
+    map("n", "gd", vim.lsp.buf.definition, opts_lsp)       -- Ir a definición
+    map("n", "gr", vim.lsp.buf.references, opts_lsp)       -- Ver referencias
+    map("n", "K", vim.lsp.buf.hover, opts_lsp)             -- Documentación
+    map("n", "gi", vim.lsp.buf.implementation, opts_lsp)   -- Ir a implementación
+
+    -- Acciones
+    map("n", "<leader>rn", vim.lsp.buf.rename, opts_lsp)   -- Renombrar
+    map("n", "<leader>ca", vim.lsp.buf.code_action, opts_lsp) -- Code actions
+
+    -- Diagnósticos
+    map("n", "[d", vim.diagnostic.goto_prev, opts_lsp)     -- Error anterior
+    map("n", "]d", vim.diagnostic.goto_next, opts_lsp)     -- Error siguiente
+    map("n", "<leader>e", vim.diagnostic.open_float, opts_lsp) -- Mostrar error
+  end,
+})
