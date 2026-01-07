@@ -1,4 +1,5 @@
--- ~/.config/nvim/lua/plugins/essentials.lua
+-- ~\AppData\Local\nvim\lua\plugins\essentials.lua
+
 return {
   -- Telescope: fuzzy finder (IMPRESCINDIBLE)
   {
@@ -20,7 +21,7 @@ return {
       end
 
       treesitter.setup {
-        ensure_installed = { "lua", "vim", "javascript", "typescript", "html", "css" },
+        ensure_installed = { "lua", "vim", "javascript", "typescript", "html", "css", "c_sharp" },
         highlight = { enable = true },
       }
     end
@@ -38,10 +39,4 @@ return {
   -- Mejores movimientos con s/S (opcional pero útil)
   { 'ggandor/leap.nvim' },
 
-  -- Headlines: highlighting for MarkDown files
-  {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    config = true,
-  },
 }
