@@ -67,3 +67,10 @@ autocmd("FileChangedShellPost", {
         vim.notify("Archivo recargado: " .. vim.fn.expand("%"), vim.log.levels.INFO)
     end,
 })
+
+-- Mostrar diagnóstico automáticamente al pasar cursor
+autocmd("CursorHold", {
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+  end
+})

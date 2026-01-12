@@ -21,7 +21,6 @@ return {
           "cssls",         -- CSS
           "omnisharp",     -- C#
           "sqlls",         -- SQL
-          "vue_ls"          -- Vue
         },
         automatic_installation = true,
       })
@@ -56,7 +55,18 @@ return {
       lspconfig.cssls.setup({ capabilities = capabilities })
 
       -- C#
-      lspconfig.omnisharp.setup({ capabilities = capabilities })
+      lspconfig.omnisharp.setup({
+         capabilities = capabilities,
+         cmd = {
+            "dotnet",
+            vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll"
+          },
+          enable_editorconfig_support = true,
+          enable_ms_build_load_projects_on_demand = false,
+          enable_roslyn_analyzers = true,
+          organize_imports_on_format = true,
+          enable_import_completion = true,
+      })
 
       -- SQL
       lspconfig.sqlls.setup({ capabilities = capabilities })
