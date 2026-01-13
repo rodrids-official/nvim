@@ -89,18 +89,18 @@ return {
       }
 
       -- Configurar soporte para Vue solo si el paquete está instalado
-      if mason_registry.is_installed("vue-language-server") then
-          local vue_language_server = mason_registry.get_package("vue-language-server"):get_install_path() .. "/node_modules/@vue/language_server"
-          ts_config.init_options = {
-              plugins = {
-                  {
-                      name = "@vue/typescript-plugin",
-                      location = vue_language_server,
-                      languages = { "vue" }
-                  }
-              }
-          }
-      end
+     -- if mason_registry.is_installed("vue-language-server") then
+     --     local vue_language_server = mason_registry.get_package("vue-language-server"):get_install_path() .. "/node_modules/@vue/language_server"
+     --     ts_config.init_options = {
+     --         plugins = {
+     --             {
+     --                 name = "@vue/typescript-plugin",
+     --                 location = vue_language_server,
+     --                 languages = { "vue" }
+     --             }
+     --         }
+     --     }
+     -- end
 
       lspconfig.ts_ls.setup(ts_config)
     end

@@ -9,4 +9,4 @@ require("config.lazy")
 require("utils.helpers")
 
 vim.cmd('packadd! nohlsearch')
-vim.cmd('colorscheme material-deep-ocean')
+vim.cmd('colorscheme material-darker')
