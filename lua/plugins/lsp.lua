@@ -1,4 +1,3 @@
--- ~\AppData\Local\nvim\lua\plugins\lsp.lua
 return {
   -- Mason: gestor de LSP servers
   {

@@ -1,5 +1,3 @@
--- options
-
 local opt = vim.opt
 
 opt.tabstop = 4
@@ -38,10 +36,10 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     border = "rounded",
-    source = "always",  -- Mostrar fuente del error
+    source = "always",
     header = "",
     prefix = "",
   },
 })
 
-vim.o.updatetime = 250  -- Tiempo de espera (ms)
+vim.o.updatetime = 250
