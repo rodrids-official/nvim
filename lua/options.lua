@@ -20,10 +20,7 @@ opt.confirm = true
 opt.statusline = " %F %m%= %y | %{getcwd()} | %l:%c "
 
 -- Definir Powershell como terminal por defecto
-opt.shell = "powershell"
-opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned Command"
-opt.shellquote = ""
-opt.shellxquote = ""
+opt.shell = "bash"
 
 -- Autorecarga de archivos
 opt.autoread = true
