@@ -5,7 +5,6 @@ vim.g.loaded_netrwPlugin = 1
 
 -- Propiedades globales de plugins personalizadas
 vim.g.nvim_tree_respect_buf_cwd = 1
---vim.g.nvim_tree_sync_root_with_cwd = false
 
 require("options")
 require("keymaps")
