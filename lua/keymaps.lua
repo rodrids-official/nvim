@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local function opts(desc) return { desc = desc, noremap = true, silent = true } end
 
 -- Funciones personalizadas para atajos
 function ChangeBufferDir()
@@ -28,25 +28,45 @@ function SaveAsFile()
   end)
 end
 
+function ResizeV()
+    vim.ui.input({
+        prompt = "Nuevo ancho: "
+    }, function(input)
+        if input then
+            vim.cmd("vertical res " .. input)
+        end
+    end)
+end
+
+function ResizeH()
+    vim.ui.input({
+        prompt = "Nuevo alto: "
+    }, function(input)
+        if input then
+            vim.cmd("res " .. input)
+        end
+    end)
+end
+
 -- Salir del modo terminal
 map('t', '<Esc>', '<C-\\><C-n>')
 
--- Telescope (buscar archivos, texto, etc)
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-map("n", "<leader>fF", "<cmd>Telescope find_files cwd=~<cr>", opts)
-map("n", "<leader>f/", "<cmd>Telescope find_files cwd=C:\"<cr>", opts)
-map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
+map({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr>", opts("Guardar archivo"))
+map({ "n", "i", "v" }, "<C-a>s", SaveAsFile, opts("Guardar archivo como"))
 
--- Guardar archivo ya creado del buffer actual ya creado
-map({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr>", opts)
+map("n", "<C-o>", ChangeBufferDir, opts("Cambiar directorio de trabajo del buffer actual"))
 
--- Guardar como archivo del buffer actual
-map({ "n", "i", "v" }, "<C-a>s", SaveAsFile, opts)
+map({ "n", "i", "v", "t"}, "<A-w>v", ResizeV, opts("Redimensionar ancho de ventana"))
+map({ "n", "i", "v", "t"}, "<A-w>h", ResizeH, opts("Redimensionar alto de ventana"))
 
--- Cambiar directorio local del buffer actual desde el home
-map("n", "<C-o>", ChangeBufferDir, opts)
+-- Telescope
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts("Telescope: navegar entre archivos del buffer actual"))
+map("n", "<leader>fF", "<cmd>Telescope find_files cwd=~<cr>", opts("Telescope: navegar entre archivos del home de usuario"))
+map("n", "<leader>f/", "<cmd>Telescope find_files cwd=C:\"<cr>", opts("Telescope: navegar entre archivos de la raíz del sistema"))
+map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts("Telescope: buscar coincidencias en archivos del buffer acutal"))
+map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts("Telescope: navegar entre buffers"))
 
+-- LSP
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
@@ -65,4 +85,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- NvimTree
+map({ "n", "i", "v" }, "<C-B>", "<cmd>NvimTreeOpen<cr>", opts("NvimTree: abrir árbol"))
+map({ "n", "i", "v" }, "<C-B>q", "<cmd>NvimTreeClose<cr>", opts("NvimTree: cerra árbol"))
 

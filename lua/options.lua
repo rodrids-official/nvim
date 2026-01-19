@@ -1,7 +1,7 @@
 local opt = vim.opt
 
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.number = true
 opt.relativenumber = false
@@ -38,5 +38,7 @@ vim.diagnostic.config({
     prefix = "",
   },
 })
-
 vim.o.updatetime = 250
+
+-- nvim-tree
+opt.termguicolors = true

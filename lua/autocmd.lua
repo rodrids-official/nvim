@@ -32,14 +32,27 @@ autocmd("BufReadPost", {
   end,
   desc = "Ir a última posición del cursor"
 })
+
+-- -- Evento cuando se entra a un buffer nuevo
+-- autocmd("BufEnter", {
+--     group = general,
+--     pattern = "*",
+--     callback = function()
+--         vim.cmd("lcd %:p:h")
+--     end
+-- })
+
+-- Evento que se ejecuta la iniciar el editor
 autocmd("VimEnter", {
-    group = general,
-    callback = function()
-        if vim.fn.argc() == 0 then
-            vim.cmd("Lexplore")
-            vim.cmd("wincmd p")
-        end
-    end,
+   group = general,
+   callback = function()
+       vim.cmd('packadd! nohlsearch')
+       vim.cmd('colorscheme material-darker')
+       vim.cmd("NvimTreeOpen")
+       if vim.fn.argc() == 0 then
+           vim.cmd("Telescope find_files")
+       end
+   end,
 })
 autocmd("FileType", {
     pattern = "netrw",

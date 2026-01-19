@@ -1,5 +1,10 @@
 -- Propiedades globales de Vim personalizadas
 vim.g.mapleader = ' '
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Propiedades globales de plugins personalizadas
+vim.g.nvim_tree_respect_buf_cwd = 1
 
 require("options")
 require("keymaps")
@@ -20,6 +25,3 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "plugins" } })
 
--- Comandos a ejecutar al iniciar editor
-vim.cmd('packadd! nohlsearch')
-vim.cmd('colorscheme material-darker')
