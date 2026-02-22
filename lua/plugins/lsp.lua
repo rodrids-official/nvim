@@ -55,6 +55,7 @@ return {
       lspconfig.phpactor.setup({ capabilities = capabilities })
       lspconfig.intelephense.setup({ capabilities = capabilities })
       lspconfig.jsonls.setup({ capabilities = capabilities })
+      lspconfig.bashls.setup({ capabilities = capabilities })
 
       local ts_config = {
           capabilities = capabilities,
